@@ -1,0 +1,163 @@
+UCI: data getting
+
+numpy: for multi-dimension arrays
+panda: read the dataset
+
+kegal : data getting
+
+python: scikit library(sklearn)
+
+Types of ML:
+1. Supervised Learning 
+2. Unsupervised Learning
+
+1. Supervised Learning: Machine knows beforehand. It knows lebels, features,tagged data etc.
+category: a. classification   (classify problems) -> classifer
+          b. regression       (value)             -> regressor
+
+ie. Linear Regression
+    Simple linear Regression
+    Decision Tree Classifer
+    Knive classifer
+    Random Forest Classifier, etc.
+    
+
+
+2. Unsupervised Learning: machine has only the data, no labels, no features, no trainning
+category:  a. clustering (divide into groups)
+           b. Association  (connections)
+
+==> The data is divided into two parts: to train and to test. (trainning , testing , splitting)
+
+Simple Linear Regression:
+1. Take the best match line for the next data to be found.  (not like average to reduce the error)
+2. take the error: actual-average and square them to minimise the error, and avoid positive negative cancellation.
+3. This is called sum of square of error. which has to be minimum.
+4. label: dependent variable   Features: Independent variable
+
+
+
+Multi-Regression Model:
+1. graph
+2. y=mx+b
+f(x1)=w1 x1+w0  where the x1 and f(x1) come from the data-set. And we check the value of w1 and w0.
+3. Multi-variables: f(x1,x2)=w0+w1*x1+w2*x2
+4. f(x1,x2,...,xn)=w0+w1*x1+....+wn*xn
+5. More features, More Accurate Model, More time in training
+6. Training refers to finding w0, w1, w2, ... wn
+
+Linear Regression work:
+SSE = sum of(mx+b - y`)^2 (predict-actual) = loss function; put x and y` from data to find m, b 
+Loss Function has less value for improved model. ie. sse is one loss function
+To find minimum, find derivation with wrt m and b separately. And find m and b.
+
+Loss Functions: SSE and MSE and Absolute Error
+
+Gradient Descent: Approximation
+Learning Rate: No. subtracted from x to make y = 0
+x(new)=x-lr*(dy/dx)        Gradient Descent
+
+For multiple variable:
+x(new)=x1-lr*(dy/dx1)+x2-lr*(dy/dx2)
+
+Finding the best fit line with the help of gradient descent: assume the weight value instead of finding the values, and check for the examples using gradient descent.
+
+Loss functions:  it drives the ml algorithum to drive in the direction. it give the direction of optimal solution.
+GD and Loss func.: it exact method are computationally expensive., fast enough for big data, easy to understand
+
+MSE:SSE/n
+Mean absolute Error: MAE: sum(|yi-yi`|)/n
+Loss functions: Croos-Entropy, hinge, huber, kullback-leibler, MAE, MSE
+
+GD: to change the x in loss function to reach the optimal solution to minimise loss function
+
+=> After compute loss to paremeters are again updated for further prediction while training.
+
+Batch: The data used to compute the loss.
+If the batch is less the trainning will be accurate and faster. This is mini-batch GD.
+
+Stochastic Gradient Descent: Compute the loss of one data example and update parameters. Batch size is 1.
+learning Rate:lr: goldilox lr
+
+Classifications:
+The graph is made with the axis of each feature. The decision boundary is decided to each for labels and separate the labels.
+
+KN classifer:
+ Make the graph consisting features at the axis.
+ Now at the point where we want to find the labels, we start making circles and encounter the points in the circle and their labels. and no. of circles is K.
+ The nearest distance is used. Distance can be euclian distance,etc.
+
+  cons: No trainning but testing to find distances between the points with given point., so all burden at testing.
+              K value is found out by taking differnt value of it and their the accuracy.
+              High computational cost
+  pros: Simple
+
+
+
+Overfitting: Low trainning Error and high Test error. (ie. The line changes between two point, not a single line while trainning, but where will the test data lie, not on the line)
+Underfitting: High trainning and high test error.
+Thus, to avoid overfitting, approximation is done. Avoid learning the noise of data.
+
+To solve overfitting:
+1. Resampling: k times select random training and testing dataset from the given dataset, to ensure the model learns the distribution not the noise.
+2. Holding  a validation dataset: Take out some data from the trainning data, it is use to check overfitting by trainning dataset.
+
+
+
+
+
+MOVIE RECOMMENDATION
+
+Hybrid = content-based+collaborative filtering....
+
+
+1. Content-Based Filtering: (Netflix) : depends on content ie. similar movies are recommended. 
+It tries to find out the characteristics of the movie. If another user watches the same kind of movies of user1, the movies liked by user1 is recommended to user2.
+
+Collabrative Filtering: (Amazon): (ie. after iphone, buy hedaphone)(better)
+It try the behavior of user, ie. rating. If two users watch same kind of movies and give same ratings, then the movies recommeded are sort of same, or movies liked by one user is recommended to the another user.
+
+Movies lens dataset: (two dataset)
+  user id  ratings  item-id  timespan         item-id   movie-name
+
+After watching a particular movie, next movies is recommended on the basis of rating. Here CORRELATION is used, with python.
+
+Exploratary data analysis: use MATPLOTLIB, SEABORN
+
+Next recommended movie is found out on the basis of pivot table, and previously seen movies.
+Higher correlation-> more recommended
+The recommendation is according to ratings more than 100 number of rating.
+
+The correlation after the movies after the seen movies, where the number of rating greater than 100.
+
+
+2. KN based collaborative Filtering
+Cosine Similarity: Consider each movies rating as 2-D vector, find consine of angle between the vectors and more cosine means more score, out of 1.
+
+->shape=(record,features)
+->shape[0] == pick up one record
+->.kneighbours() == to find out the nearer movies to record picked up.
+->Picked up the whole records with features and reshape it from series to straight.
+->This gives two parameter: distances and indices.
+->Distances is distance of a movie from a particular movie and index is the index of that movie.
+->flatten[i]== get index/distance
+->{} column
+
+
+
+Book Recoomendation: correlation and rating
+
+BOOK RECOMMENDATION: COLLABARATIVE FILTERING (KN)
+scipy matrix has most values as zero and some non-zero value.
+p=2 euler distance
+kneightbour(whch row you want,n=6(how many recomdendation you want)-> return distance and index
+
+
+https://towardsdatascience.com/pandas-series-a-lightweight-intro-b7963a0d62a2
+
+
+
+
+
+
+
